@@ -11,9 +11,5 @@ spec:
       containers:
       - name: cadvisor
         args:
-          - --housekeeping_interval=10s                   # kubernetes default args
-          - --max_housekeeping_interval=15s
-          - --event_storage_event_limit=default=0
-          - --event_storage_age_limit=default=0
-          - --disable_metrics=percpu,disk,network,tcp,udp # enable only diskIO, cpu, memory
-          - --docker_only                                 # only show stats for docker containers
+          - --storage_driver="statsd"
+          - --storage_driver_host="localhost:8125"
